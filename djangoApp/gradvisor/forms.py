@@ -9,8 +9,16 @@ class ApplicantForm(forms.ModelForm):
             'greQuantitativeScore': 'out of 170',
             'greVerbalScore': 'out of 170',
             'greAWAScore': 'out of 6.0',
-            'GPA': 'in 4-scale',
+            'GPA': 'scale of 4.0',
             'toeflScore': 'out of 120',
             'workExperience': 'in months(internship/fulltime)',
-            'underGraduateUniversity': 'Name of the university'
+        }
+        labels = {
+            'greQuantitativeScore': 'GRE Quant Score',
+            'greVerbalScore': 'GRE Verbal Score',
+            'greAWAScore': 'GRE AWA Score',
+            'GPA': 'GPA',
+            'toeflScore': 'TOEFL Score',
+            'workExperience': 'Work Experience',
+            'underGraduateUniversity': 'Undergraduate University',
         }
