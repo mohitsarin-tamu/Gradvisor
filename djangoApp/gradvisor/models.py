@@ -2,10 +2,13 @@ from django.db import models
 
 # Create your models here.
 class Applicant(models.Model):
-    GRE_score = models.IntegerField()
-    TOEFL_score = models.IntegerField()
-    university_name = models.CharField(max_length=200)
+    greQuantitativeScore = models.IntegerField()
+    greVerbalScore = models.IntegerField()
+    toeflScore = models.IntegerField()
+    underGraduateUniversity = models.CharField(max_length=200)
     GPA = models.FloatField()
+    workExperience = models.IntegerField()
+    greAWAScore = models.FloatField()
 
     class Meta:
         app_label = 'gradvisor'

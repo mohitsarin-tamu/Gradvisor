@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-
 # Create your views here.
 from .forms import ApplicantForm
+from .models import Applicant
 
 def home(request):
     return render(request, 'home.html') 
@@ -19,3 +19,7 @@ def applicant_form(request):
 
 def success(request):
     return render(request, 'success.html')
+
+def applicant_list(request):
+    applicants = Applicant.objects.all()
+    return render(request, 'applicant_list.html', {'applicants': applicants})
