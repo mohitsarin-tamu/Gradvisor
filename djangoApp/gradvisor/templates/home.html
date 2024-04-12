@@ -1,0 +1,85 @@
+<!-- gradvisorWebSite/templates/home.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f2f2f2; /* Light gray background color */
+        }
+        .footer {
+            background-color: #343a40; /* Dark gray background color */
+            color: #ffffff; /* White text color */
+            padding: 20px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer-content {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .footer-content .col-md-6 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Gradvisor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="{% url 'applicant_form' %}">Applicant Form</a>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+
+        <!-- Jumbotron -->
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Welcome to Gradvisor</h1>
+            <p class="lead">Your go-to platform for academic guidance and resources.</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'applicant_form' %}" role="button">Get Started</a>
+        </div>
+
+    </div>
+
+    <!-- About and Contact Sections (Footer) -->
+    <div class="footer">
+        <div class="container footer-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>About Us</h5>
+                    <p>Gradvisor is committed to providing students with the tools and resources they need to succeed academically. Whether you are applying for graduate programs or looking for career guidance, we are here to help.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> Email: contact@gradvisor.com</li>
+                        <li><i class="fas fa-phone-alt"></i> Phone: (xxx) xxx-xxxx</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
