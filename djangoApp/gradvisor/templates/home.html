@@ -50,26 +50,10 @@
         <div class="jumbotron text-center">
             <h1 class="display-4">Welcome to Gradvisor</h1>
             <p class="lead">Your go-to platform for academic guidance and resources.</p>
-            <a class="btn btn-primary btn-lg" href="{% url 'applicant_form' %}" role="button">Get Started</a>
+            <a class="btn btn-primary btn-lg" href="{% url 'signup_login' %}" role="button">Get Started</a>
         </div>
 
         <!-- Signup/Login Forms -->
-        <div class="jumbotron text-center">
-            <div class="col-md-6">
-                <h2 class="text-center">Signup/Login</h2>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ signup_form.as_p }}
-                    <button class="btn btn-success btn-block" type="submit" name="signup">Sign Up</button>
-                </form>
-                <hr>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ login_form.as_p }}
-                    <button class="btn btn-primary btn-block" type="submit" name="login">Login</button>
-                </form>
-            </div>
-        </div>
 
     </div>
 
