@@ -20,7 +20,7 @@ from gradvisor.views import home, applicant_list, signup_login_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # path('', home, name='home'),
+    path('', home, name='home'),
     path('applicant/', include('gradvisor.urls')),
     path('applicant_list/', applicant_list, name='applicant_list'),
     path('', signup_login_view, name='login_signup'),
