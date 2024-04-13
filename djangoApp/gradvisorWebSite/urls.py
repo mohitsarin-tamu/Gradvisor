@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from gradvisor.views import home, applicant_list
+from gradvisor.views import home, applicant_list, signup
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', home, name='home'),
     path('applicant/', include('gradvisor.urls')),
     path('applicant_list/', applicant_list, name='applicant_list'),
+    path('signup/', signup, name='signup'),
 ]
