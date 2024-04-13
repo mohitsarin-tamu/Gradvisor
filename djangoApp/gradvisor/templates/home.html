@@ -1,5 +1,3 @@
-<!-- gradvisorWebSite/templates/home.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,14 +8,15 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f2f2f2; /* Light gray background color */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Full height of the viewport */
         }
         .footer {
+            margin-top: auto; /* Push the footer to the bottom */
             background-color: #343a40; /* Dark gray background color */
             color: #ffffff; /* White text color */
             padding: 20px 0;
-            position: absolute;
-            bottom: 0;
             width: 100%;
         }
         .footer-content {
@@ -52,6 +51,24 @@
             <h1 class="display-4">Welcome to Gradvisor</h1>
             <p class="lead">Your go-to platform for academic guidance and resources.</p>
             <a class="btn btn-primary btn-lg" href="{% url 'applicant_form' %}" role="button">Get Started</a>
+        </div>
+
+        <!-- Signup/Login Forms -->
+        <div class="jumbotron text-center">
+            <div class="col-md-6">
+                <h2 class="text-center">Signup/Login</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ signup_form.as_p }}
+                    <button class="btn btn-success btn-block" type="submit" name="signup">Sign Up</button>
+                </form>
+                <hr>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ login_form.as_p }}
+                    <button class="btn btn-primary btn-block" type="submit" name="login">Login</button>
+                </form>
+            </div>
         </div>
 
     </div>
