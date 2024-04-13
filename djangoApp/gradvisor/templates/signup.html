@@ -2,44 +2,87 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up Page</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #f2f2f2; /* Light gray background color */
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
         }
+
+        .navbar {
+            background-color: #343a40 !important;
+        }
+
+        .navbar-brand {
+            font-weight: 500;
+        }
+
         .form-section {
-            background-color: #ffffff; /* White background for form section */
-            padding: 20px;
-            margin-top: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #ffffff;
+            padding: 30px;
+            margin-top: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+
+        .form-section h2 {
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
         .form-section form {
-            text-align: center; /* Center-align form elements */
+            text-align: center;
         }
-        .form-section form label, 
-        .form-section form input, 
-        .form-section form select, 
+
+        .form-section form label,
+        .form-section form input,
+        .form-section form select,
         .form-section form button {
             margin-top: 10px;
             margin-bottom: 10px;
-            font-size: 14px; /* Adjusting font size */
+            font-size: 14px;
         }
+
         .error {
-            color: red;
+            color: #dc3545;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #343a40;
+            border-color: #343a40;
+            width: 20%;
+            padding: 10px 15px;
+        }
+
+        .btn-primary:hover {
+            background-color: #2a2f35;
+            border-color: #2a2f35;
+        }
+
+        /* Reduce input box length */
+        .form-control {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center; /* Center-align input fields */
         }
     </style>
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Gradvisor</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -51,26 +94,25 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
+    <div class="container mt-4">
         <!-- Sign Up Form Section -->
         <div class="container form-section">
-            <h2 class="text-center">Sign Up</h2>
             <form method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username" class="text-center">Username</label>
                     <input type="text" class="form-control" id="username" name="username" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email" class="text-center">Email</label>
                     <input type="email" class="form-control" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password1">Password</label>
+                    <label for="password1" class="text-center">Password</label>
                     <input type="password" class="form-control" id="password1" name="password1" required>
                 </div>
                 <div class="form-group">
-                    <label for="password2">Confirm Password</label>
+                    <label for="password2" class="text-center">Confirm Password</label>
                     <input type="password" class="form-control" id="password2" name="password2" required>
                 </div>
                 {% if form.errors %}
@@ -94,4 +136,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
