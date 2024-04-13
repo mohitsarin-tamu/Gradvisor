@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 class Applicant(models.Model):
+    username = models.CharField(max_length=100, default=False)
+    passwordVal = models.CharField(max_length=100, default=False)
     greQuantitativeScore = models.IntegerField()
     greVerbalScore = models.IntegerField()
     toeflScore = models.IntegerField()
