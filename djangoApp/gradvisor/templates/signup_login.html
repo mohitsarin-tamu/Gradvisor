@@ -1,0 +1,24 @@
+<!-- signup_login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup/Login</title>
+</head>
+<body>
+    <h2>Signup</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ signup_form.as_p }}
+        <button type="submit" name="signup">Sign Up</button>
+    </form>
+
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ login_form.as_p }}
+        <button type="submit" name="login">Login</button>
+    </form>
+</body>
+</html>
