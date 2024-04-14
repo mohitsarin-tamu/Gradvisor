@@ -19,8 +19,13 @@ def signup_login_view(request):
             signup_form = UserCreationForm(request.POST)
             if signup_form.is_valid():
                 user = signup_form.save()
+                username = signup_form.cleaned_data.get('username')
                 login(request, user)
+                print(f"User {username} signed up successfully!")
                 return redirect('applicant_form')
+            else:
+                print("Signup form errors:", signup_form.errors)
+
         elif 'login' in request.POST:
             login_form = AuthenticationForm(request, data=request.POST)
             if login_form.is_valid():
@@ -30,6 +35,8 @@ def signup_login_view(request):
                 if user is not None:
                     login(request, user)
                     return redirect('applicant_form')
+                else:
+                    print("Authentication failed")
 
     return render(request, 'signup_login.html', {'signup_form': signup_form, 'login_form': login_form})
 

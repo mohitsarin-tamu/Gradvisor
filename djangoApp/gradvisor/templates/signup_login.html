@@ -41,6 +41,9 @@
             margin-top: 20px;
             font-size: 16px;
         }
+        .error {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -60,13 +63,35 @@
     </nav>
 
     <div class="container mt-5">
-        <!-- Signup Form Section -->
+        <!-- Sign Up Form Section -->
         <div class="container form-section">
-            <h2>Signup</h2>
+            <h2>Sign Up</h2>
             <form method="post">
                 {% csrf_token %}
-                {{ signup_form.as_p }}
-                <button type="submit" name="signup" class="btn btn-primary">Sign Up</button>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type="password" class="form-control" id="password1" name="password1" required>
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" class="form-control" id="password2" name="password2" required>
+                </div>
+                {% if signup_form.errors %}
+                <div class="error">
+                    <ul>
+                        {% for field, errors in signup_form.errors.items %}
+                        {% for error in errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                <button type="submit" class="btn btn-primary" name="signup">Sign Up</button>
             </form>
         </div>
 
