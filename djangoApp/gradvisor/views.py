@@ -1,10 +1,45 @@
+from django.contrib.auth import authenticate
+from django.contrib.auth import login, logout
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
 # Create your views here.
 from .forms import ApplicantForm
 from .models import Applicant
+from django.contrib import messages
 
 def home(request):
     return render(request, 'home.html') 
+
+def signup_login_view(request):
+    signup_form = UserCreationForm()
+    login_form = AuthenticationForm()
+
+    if request.method == 'POST':
+        if 'signup' in request.POST:
+            signup_form = UserCreationForm(request.POST)
+            if signup_form.is_valid():
+                user = signup_form.save()
+                username = signup_form.cleaned_data.get('username')
+                login(request, user)
+                print(f"User {username} signed up successfully!")
+                return redirect('applicant_form')
+            else:
+                print("Signup form errors:", signup_form.errors)
+
+        elif 'login' in request.POST:
+            login_form = AuthenticationForm(request, data=request.POST)
+            if login_form.is_valid():
+                username = login_form.cleaned_data.get('username')
+                password = login_form.cleaned_data.get('password')
+                user = authenticate(username=username, password=password)
+                if user is not None:
+                    login(request, user)
+                    return redirect('applicant_form')
+                else:
+                    print("Authentication failed")
+
+    return render(request, 'signup_login.html', {'signup_form': signup_form, 'login_form': login_form})
+
 
 def applicant_form(request):
     if request.method == 'POST':

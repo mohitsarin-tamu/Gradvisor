@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Signup/Login</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* Full height of the viewport */
+            background-color: #f2f2f2; /* Light gray background color */
         }
         .footer {
-            margin-top: auto; /* Push the footer to the bottom */
             background-color: #343a40; /* Dark gray background color */
             color: #ffffff; /* White text color */
             padding: 20px 0;
@@ -23,8 +20,29 @@
             padding-top: 20px;
             padding-bottom: 20px;
         }
-        .footer-content .col-md-6 {
+        .form-section {
+            background-color: #ffffff; /* White background for form section */
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .form-section form {
+            text-align: left; /* Left-align form elements */
+        }
+        .form-section form label {
+            font-size: 16px; /* Adjusting font size */
+            font-weight: bold;
+        }
+        .form-section form .form-group {
             margin-bottom: 20px;
+        }
+        .form-section form button {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
         }
     </style>
 </head>
@@ -38,27 +56,58 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <!-- <li class="nav-item">
-                    <a class="nav-link" href="{% url 'applicant_form' %}">Applicant Form</a>
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
                 </li> -->
             </ul>
         </div>
     </nav>
 
     <div class="container mt-5">
-
-        <!-- Jumbotron -->
-        <div class="jumbotron text-center">
-            <h1 class="display-4">Welcome to Gradvisor</h1>
-            <p class="lead">Your go-to platform for academic guidance and resources.</p>
-            <a class="btn btn-primary btn-lg" href="{% url 'signup_login' %}" role="button">Get Started</a>
+        <!-- Sign Up Form Section -->
+        <div class="container form-section">
+            <h2>Sign Up</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type="password" class="form-control" id="password1" name="password1" required>
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" class="form-control" id="password2" name="password2" required>
+                </div>
+                {% if signup_form.errors %}
+                <div class="error">
+                    <ul>
+                        {% for field, errors in signup_form.errors.items %}
+                        {% for error in errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                <button type="submit" class="btn btn-primary" name="signup">Sign Up</button>
+            </form>
         </div>
 
-        <!-- Signup/Login Forms -->
-
+        <!-- Login Form Section -->
+        <div class="container form-section mt-4">
+            <h2>Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ login_form.as_p }}
+                <button type="submit" name="login" class="btn btn-primary">Login</button>
+            </form>
+        </div>
     </div>
 
     <!-- About and Contact Sections (Footer) -->
-    <div class="footer">
+    <div class="footer mt-5">
         <div class="container footer-content">
             <div class="row">
                 <div class="col-md-6">
