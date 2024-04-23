@@ -11,6 +11,7 @@ class Applicant(models.Model):
     GPA = models.FloatField()
     workExperience = models.IntegerField()
     greAWAScore = models.FloatField()
+    researchExperience = models.IntegerField(default=0)
 
     class Meta:
         app_label = 'gradvisor'

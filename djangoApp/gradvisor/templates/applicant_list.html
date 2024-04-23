@@ -7,7 +7,7 @@
     <h1>Applicant List</h1>
     <ul>
         {% for applicant in applicants %}
-        <li>underGraduateUniversity: {{ applicant.underGraduateUniversity }} , GRE: {{ applicant.greQuantitativeScore|add:applicant.greVerbalScore }}, TOEFL: {{ applicant.toeflScore }}, GPA: {{ applicant.GPA }}</li>
+        <li>underGraduateUniversity: {{ applicant.underGraduateUniversity }} , GRE: {{ applicant.greQuantitativeScore|add:applicant.greVerbalScore }}, TOEFL: {{ applicant.toeflScore }}, GPA: {{ applicant.GPA }}, Work Experience: {{ applicant.workExperience }}, Research Experience: {{applicant.researchExperience}} </li>
         {% endfor %}
     </ul>
     <a href="{% url 'applicant_form' %}">Add New Applicant</a>
