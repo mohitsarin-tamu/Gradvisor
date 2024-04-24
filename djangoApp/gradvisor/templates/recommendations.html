@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University Recommendations</title>
+</head>
+<body>
+
+<h2>Your Recommended Universities:</h2>
+
+<ul>
+    {% for univ, prob in top_five_predictions %}
+    <li>{{ univ }} - Probability: {{ prob }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
