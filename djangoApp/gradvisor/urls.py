@@ -15,5 +15,6 @@ urlpatterns = [
     path('signup_login/', views.signup_login_view, name='signup_login'),
     path('applicant_form/', views.applicant_form, name='applicant_form'),
     path('success/', views.success, name='success'),
+    path('recommendations/', views.applicant_form, name='recommendations'),
     path('admin/', admin.site.urls),
 ]

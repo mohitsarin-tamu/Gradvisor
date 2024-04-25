@@ -4,13 +4,13 @@ from django.db import models
 class Applicant(models.Model):
     username = models.CharField(max_length=100, default=False)
     passwordVal = models.CharField(max_length=100, default=False)
-    greQuantitativeScore = models.IntegerField()
-    greVerbalScore = models.IntegerField()
-    toeflScore = models.IntegerField()
-    underGraduateUniversity = models.CharField(max_length=200)
-    GPA = models.FloatField()
-    workExperience = models.IntegerField()
-    greAWAScore = models.FloatField()
+    researchExp = models.IntegerField(default=0)
+    industryExp = models.IntegerField(default=0)
+    internExp = models.FloatField(default=0.0)
+    journalPubs = models.IntegerField(default=0)
+    confPubs = models.IntegerField(default=0)
+    cgpa = models.FloatField()
+    gre_score = models.IntegerField(default=270)
 
     class Meta:
         app_label = 'gradvisor'
