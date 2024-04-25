@@ -24,7 +24,7 @@ if sklearn.__version__ != '1.2.2':
 
 try:
     with open(os.path.join(BASE_DIR, 'adaboost_model.pkl'), 'rb') as file:
-        ada_model = pickle.load(file)
+        ada_model = joblib.load(file)
 except ValueError as e:
     print(e)
     print("Please retrain the model.")
@@ -69,14 +69,15 @@ def predict_universities(user_data):
     if ada_model is None:
         return None
 
-     # Create a DataFrame from the user data
+    # Create a DataFrame from the user data
     df = pd.DataFrame({
-        'greQuantitativeScore': [user_data['greQuantitativeScore']],
-        'greVerbalScore': [user_data['greVerbalScore']],
-        'greAWAScore': [user_data['greAWAScore']],
-        'GPA': [user_data['GPA']],
-        'workExperience': [user_data['workExperience']],
-        'researchExperience': [user_data['researchExperience']]
+        'researchExp': [user_data['researchExp']],
+        'industryExp': [user_data['industryExp']],
+        'internExp': [user_data['internExp']],
+        'journalPubs': [user_data['journalPubs']],
+        'confPubs': [user_data['confPubs']],
+        'cgpa': [user_data['cgpa']],
+        'gre_score': [user_data['gre_score']],
     })
     
     # Make predictions
@@ -106,23 +107,23 @@ def applicant_form(request):
         form = ApplicantForm(request.POST)
         if form.is_valid():
             # Extract form data
-            greQuantitativeScore = form.cleaned_data.get('greQuantitativeScore')
-            greVerbalScore = form.cleaned_data.get('greVerbalScore')
-            greAWAScore = form.cleaned_data.get('greAWAScore')
-            GPA = form.cleaned_data.get('GPA')
-            toeflScore = form.cleaned_data.get('toeflScore')
-            workExperience = form.cleaned_data.get('workExperience')
-            researchExperience = form.cleaned_data.get('researchExperience')
+            researchExp = form.cleaned_data.get('researchExp')
+            industryExp = form.cleaned_data.get('industryExp')
+            internExp = form.cleaned_data.get('internExp')
+            journalPubs = form.cleaned_data.get('journalPubs')
+            confPubs = form.cleaned_data.get('confPubs')
+            cgpa = form.cleaned_data.get('cgpa')
+            gre_score = form.cleaned_data.get('gre_score')
 
             # Process data into a DataFrame
             user_data = {
-                'greQuantitativeScore': greQuantitativeScore,
-                'greVerbalScore': greVerbalScore,
-                'greAWAScore': greAWAScore,
-                'GPA': GPA,
-                'toeflScore': toeflScore,
-                'workExperience': workExperience,
-                'researchExperience': researchExperience
+                'researchExp': researchExp,
+                'industryExp': industryExp,
+                'internExp': internExp,
+                'journalPubs': journalPubs,
+                'confPubs': confPubs,
+                'cgpa': cgpa,
+                'gre_score': gre_score
             }
 
             # Make predictions
