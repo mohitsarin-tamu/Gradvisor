@@ -139,7 +139,7 @@ def applicant_form(request):
                 'gre_scores': gre_score,
                 'predicted_colleges': top_five_predictions,
             }
-            return render(request, 'recommendations.html', {'top_five_predictions': context})
+            return render(request, 'recommendations.html',  context)
     else:
         form = ApplicantForm()
     
