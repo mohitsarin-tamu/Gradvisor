@@ -9,11 +9,11 @@ class Applicant(models.Model):
     internExp = models.FloatField(default=0.0)
     journalPubs = models.IntegerField(default=0)
     confPubs = models.IntegerField(default=0)
-    cgpa = models.FloatField()
-    gre_score = models.IntegerField(default=270)
+    cgpa = models.FloatField(default=0.0)
+    gre_score = models.IntegerField(default=260)
 
     class Meta:
         app_label = 'gradvisor'
 
     def __str__(self):
-        return self.university_name
+        return self.username
