@@ -105,6 +105,11 @@ def predict_universities(user_data):
 def applicant_form(request):
     if request.method == 'POST':
         form = ApplicantForm(request.POST)
+
+        username = request.user.username
+        form.userName = username
+        form.save()
+
         if form.is_valid():
             # Extract form data
             researchExp = form.cleaned_data.get('researchExp')
@@ -128,8 +133,13 @@ def applicant_form(request):
 
             # Make predictions
             top_five_predictions = predict_universities(user_data)
-            
-            return render(request, 'recommendations.html', {'top_five_predictions': top_five_predictions})
+            context = {
+                'username': form.userName,
+                'cgpa': cgpa,
+                'gre_scores': gre_score,
+                'predicted_colleges': top_five_predictions,
+            }
+            return render(request, 'recommendations.html',  context)
     else:
         form = ApplicantForm()
     
