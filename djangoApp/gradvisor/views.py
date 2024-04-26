@@ -10,10 +10,14 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404
+
 # Create your views here.
 from .forms import ApplicantForm
 from .models import Applicant
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 # Get the absolute path to the current directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -45,6 +49,7 @@ def signup_login_view(request):
                 username = signup_form.cleaned_data.get('username')
                 login(request, user)
                 print(f"User {username} signed up successfully!")
+                
                 return redirect('applicant_form')
             else:
                 print("Signup form errors:", signup_form.errors)
@@ -101,17 +106,22 @@ def predict_universities(user_data):
 
     return top_five_predictions
 
-
+@login_required
 def applicant_form(request):
+    username = request.user.username
+    user_id = request.user.id
+    print('here:', username, user_id)
+
+    applicant_entry = Applicant.objects.filter(id=user_id).first()
+    print("Applicant Entry:", applicant_entry)
+
     if request.method == 'POST':
-        form = ApplicantForm(request.POST)
-
-        username = request.user.username
-        form.userName = username
-        form.save()
-
+        form = ApplicantForm(request.POST, instance=applicant_entry)
         if form.is_valid():
             # Extract form data
+            form.instance.userName = username
+            applicant = form.save(commit=False)
+            applicant.save()
             researchExp = form.cleaned_data.get('researchExp')
             industryExp = form.cleaned_data.get('industryExp')
             internExp = form.cleaned_data.get('internExp')
@@ -134,14 +144,14 @@ def applicant_form(request):
             # Make predictions
             top_five_predictions = predict_universities(user_data)
             context = {
-                'username': form.userName,
+                'username': username,
                 'cgpa': cgpa,
                 'gre_scores': gre_score,
                 'predicted_colleges': top_five_predictions,
             }
             return render(request, 'recommendations.html',  context)
     else:
-        form = ApplicantForm()
+        form = ApplicantForm(instance=applicant_entry) if applicant_entry else ApplicantForm()
     
     return render(request, 'applicant_form.html', {'form': form})
 
