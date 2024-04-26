@@ -48,15 +48,19 @@
 
         <!-- University Recommendations -->
         <h2>Your Recommended Universities:</h2>
-
-        <ul class="list-group">
-            {% for univ, prob in top_five_predictions %}
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{ univ }}
-                <span class="badge badge-primary badge-pill">Probability: {{ prob }}</span>
-            </li>
-            {% endfor %}
-        </ul>
+        <div class="row applicant-details" style="background-color: #f8f9fa; border-radius: 10px; padding: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <div class="col-md-6 border-right" style="color: #343a40;"> <!-- Added border-right class here -->
+                <p><strong>Username:</strong> {{ username }}</p>
+                <p><strong>CGPA:</strong> {{ cgpa }}</p>
+                <p><strong>GRE Scores:</strong> {{ gre_scores }}</p>
+            </div>
+            <div class="col-md-6" style="color: #343a40;">
+                <p><strong>Recommended Universities:</strong></p>
+                {% for univ, prob in top_five_predictions %}
+                <pre class="predicted-colleges">{{ univ }}</pre>
+                {% endfor %}
+            </div>
+        </div>
 
     </div>
 
