@@ -47,14 +47,23 @@
     <div class="container mt-5">
 
         <!-- Jumbotron -->
-        <div class="jumbotron text-center">
-            <h1 class="display-4">Welcome to Gradvisor</h1>
-            <p class="lead">Your go-to platform for academic guidance and resources.</p>
-            <a class="btn btn-primary btn-lg" href="{% url 'signup_login' %}" role="button">Get Started</a>
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <!-- Column for the welcome message -->
+                    <div class="col-md-6 offset-md-2 text-center">
+                        <h1 class="display-5">Welcome to Gradvisor</h1>
+                        <p class="lead">Your go-to platform for academic guidance and resources.</p>
+                        <a class="btn btn-primary btn-lg" href="{% url 'signup_login' %}" role="button">Get Started</a>
+                    </div>
+                    <!-- Column for the GIF image -->
+                    <div class="col-md-4 text-center">
+                        {% load static %}
+                        <img src="{% static 'gradvisor.gif' %}" alt="gradvisorgif" style="max-width: 80%;">
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Signup/Login Forms -->
-
     </div>
 
     <!-- About and Contact Sections (Footer) -->
