@@ -107,10 +107,8 @@ def predict_universities(user_data):
 def applicant_form(request):
     username = request.user.username
     user_id = request.user.id
-    # print('here:', username, user_id)
 
     applicant_entry = Applicant.objects.filter(id=user_id).first()
-    # print("Applicant Entry:", applicant_entry)
 
     if request.method == 'POST':
         form = ApplicantForm(request.POST, instance=applicant_entry)
