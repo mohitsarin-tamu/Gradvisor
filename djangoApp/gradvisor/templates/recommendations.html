@@ -67,39 +67,41 @@
     </nav>
 
     <div class="container mt-5">
-
-        <!-- University Recommendations -->
-        <div class="container mt-5">
-            <!-- details -->
-            <div class="container form-section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="text-center">Applicant Details</h1>
-                        </div>
+    <!-- details -->
+        <div class="container form-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center">Applicant Details</h1>
                     </div>
-                    <div class="row applicant-details" style="background-color: #f8f9fa; border-radius: 10px; padding: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                        <div class="col-md-6 border-right" style="color: #343a40;"> <!-- Added border-right class here -->
-                            <p><strong>Username:</strong> {{ username }}</p>
-                            <p><strong>CGPA:</strong> {{ cgpa }}</p>
-                            <p><strong>GRE Scores:</strong> {{ gre_scores }}</p>
-                        </div>
-                        <div class="col-md-6" style="color: #343a40;">
-                            <p><strong>Recommended Universities:</strong></p>
-                            {% for univ, prob in predicted_colleges %}
-                            <pre class="predicted-colleges">{{ univ }}</pre>
-                            {% endfor %}
-                        </div>
                 </div>
-                 <div class="col-md-12 text-center mt-3"> <!-- Added mt-3 class for spacing -->
-                        <a class="btn btn-primary btn-lg" href="{% url 'success' %}" role="button" style="background-color: #007bff; border-color: #007bff;">Similar Users</a>
+                <div class="row applicant-details" style="background-color: #f8f9fa; border-radius: 10px; padding: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <div class="col-md-6 border-right" style="color: #343a40;"> <!-- Added border-right class here -->
+                        <p><strong>Username:</strong> {{ username }}</p>
+                        <p><strong>CGPA:</strong> {{ cgpa }}</p>
+                        <p><strong>GRE Scores:</strong> {{ gre_scores }}</p>
                     </div>
-                    
+                    <div class="col-md-6" style="color: #343a40;">
+                        <p><strong>Recommended Universities:</strong></p>
+                        <ul>
+                            {% for univ, prob in predicted_colleges %}
+                            <li>{{ univ }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-md-12 mt-4" style="color: #343a40;">
+                        <p><strong>Similar Users:</strong></p>
+                        <ul>
+                            {% for username in similarity_users %}
+                            <li>{{ username }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
+
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
