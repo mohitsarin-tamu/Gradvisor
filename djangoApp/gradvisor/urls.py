@@ -16,5 +16,6 @@ urlpatterns = [
     path('applicant_form/', views.applicant_form, name='applicant_form'),
     path('success/', views.success, name='success'),
     path('recommendations/', views.applicant_form, name='recommendations'),
+    path('message_users/', views.message_users, name='message_users'),
     path('admin/', admin.site.urls),
 ]

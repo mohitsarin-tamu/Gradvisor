@@ -14,9 +14,9 @@
             background-color: #f2f2f2; /* Light gray background color */
         }
         .footer {
-            margin-top: auto; /* Push the footer to the bottom */
-            background-color: #343a40; /* Dark gray background color */
-            color: #ffffff; /* White text color */
+            margin-top: auto;
+            background-color: #343a40;
+            color: #ffffff;
             padding: 20px 0;
             width: 100%;
         }
@@ -25,17 +25,17 @@
             padding-bottom: 20px;
         }
         .form-section {
-            background-color: #ffffff; /* White background for form section */
+            background-color: #ffffff;
             padding: 30px;
             margin-top: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .form-section form {
-            text-align: left; /* Left-align form elements */
+            text-align: left;
         }
         .form-section form label {
-            font-size: 16px; /* Adjusting font size */
+            font-size: 16px;
             font-weight: bold;
         }
         .form-section form .form-group {
@@ -48,66 +48,142 @@
         .error {
             color: red;
         }
+        
+        .collapsible {
+            background-color: #343a40; /* Match the color with the navbar */
+            color: #ffffff;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .collapsible:hover {
+            background-color: #4d545c; /* Darker shade of the navbar color on hover */
+        }
+
+        .active {
+            background-color: #4d545c; /* Darker shade of the navbar color for active (open) state */
+        }
+
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+
+        .active .content {
+            max-height: 1000px;
+        }
+        
+        /* Margin for Message button */
+        .message-btn {
+            margin-left: 50px;
+        }
+        
+        /* Margin between similar users */
+        .similar-user {
+            margin-bottom: 20px;
+        }
+
+        .recommended-universities li {
+            margin-bottom: 10px;
+        }
+
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">Gradvisor</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="{% url 'applicant_form' %}">Applicant Form</a>
-                </li> -->
-            </ul>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'home' %}">Gradvisor</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="{% url 'applicant_form' %}">Applicant Form</a>
+            </li> -->
+        </ul>
+    </div>
+</nav>
 
-    <div class="container mt-5">
-    <!-- details -->
-        <div class="container form-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="text-center">Applicant Details</h1>
-                    </div>
-                </div>
-                <div class="row applicant-details" style="background-color: #f8f9fa; border-radius: 10px; padding: 50px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                    <div class="col-md-6 border-right" style="color: #343a40;"> <!-- Added border-right class here -->
-                        <p><strong>Username:</strong> {{ username }}</p>
-                        <p><strong>CGPA:</strong> {{ cgpa }}</p>
-                        <p><strong>GRE Scores:</strong> {{ gre_scores }}</p>
-                    </div>
-                    <div class="col-md-6" style="color: #343a40;">
-                        <p><strong>Recommended Universities:</strong></p>
-                        <ul>
-                            {% for univ, prob in predicted_colleges %}
-                            <li>{{ univ }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="col-md-12 mt-4" style="color: #343a40;">
-                        <p><strong>Similar Users:</strong></p>
-                        <ul>
-                            {% for username in similarity_users %}
-                            <li>{{ username }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
+<div class="container mt-5">
+    <!-- Applicant Details Section -->
+    <button class="collapsible">Applicant Details</button>
+    <div class="form-section content">
+        <div class="row">
+            <div class="col-md-6" style="color: #343a40;">
+                <p><strong>Username:</strong> {{ username }}</p>
+                <p><strong>CGPA:</strong> {{ cgpa }}</p>
+                <p><strong>GRE Score:</strong> {{ gre_score }}</p>
+                <p><strong>Industry Experience:</strong> {{ industryExp }} months</p>
+                <p><strong>Research Experience:</strong> {{ researchExp }} months</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommended Universities Section -->
+    <button class="collapsible mt-3">Recommended Universities</button>
+    <div class="form-section content">
+        <div class="row">
+            <div class="col-md-6" style="color: #343a40; padding-left: 0;">
+                <ul class="recommended-universities">
+                    {% for univ, prob in predicted_colleges %}
+                    <p>{{ univ }}</p>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
 
 
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <!-- Bootstrap JS and jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Similar Users Section -->
+    <button class="collapsible mt-3">Similar Users</button>
+    <div class="form-section content">
+        <div class="row">
+            <div class="col-md-6" style="color: #343a40; padding-left: 0;">
+                <ul>
+                {% for username in similarity_users %}
+                <p class="similar-user">{{ username }} : 
+                    <a href="{% url 'message_users' %}" class="btn btn-primary btn-sm ml-2 message-btn">Message</a>
+                </p>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<!-- Bootstrap JS and jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } 
+        });
+    }
+</script>
 </body>
 </html>
