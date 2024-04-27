@@ -29,5 +29,5 @@ class ApplicantForm(forms.ModelForm):
             'journalPubs': 'Journal Publications',
             'confPubs': 'Conference Publications',
             'cgpa': 'CGPA',
-            'gre_score': 'Total GRE Score'
+            'gre_score': 'GRE Score'
         }

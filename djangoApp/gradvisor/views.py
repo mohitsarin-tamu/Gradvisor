@@ -241,7 +241,9 @@ def applicant_form(request):
             context = {
                 'username': username,
                 'cgpa': cgpa,
-                'gre_scores': gre_score,
+                'gre_score': gre_score,
+                'industryExp': industryExp,
+                'researchExp': researchExp,
                 'predicted_colleges': top_five_predictions,
                 'similarity_users': similar_users,
             }
@@ -257,3 +259,7 @@ def success(request):
 def applicant_list(request):
     applicants = Applicant.objects.all()
     return render(request, 'applicant_list.html', {'applicants': applicants})
+
+
+def message_users(request):
+    return render(request, 'message_users.html')
