@@ -6,6 +6,8 @@
     <title>University Recommendations</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             display: flex;
@@ -28,6 +30,7 @@
             background-color: #ffffff;
             padding: 30px;
             margin-top: 30px;
+            margin-bottom: 30px; /* Increased margin between sections */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
@@ -44,6 +47,15 @@
         .form-section form button {
             margin-top: 20px;
             font-size: 16px;
+            padding: 8px 16px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .form-section form button:hover {
+            background-color: #0056b3;
         }
         .error {
             color: red;
@@ -89,12 +101,24 @@
         }
         
         /* Margin between similar users */
+        .similar-user-container {
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+            margin-bottom: 20px; /* Increased margin between users */
+        }
+
         .similar-user {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .recommended-universities li {
             margin-bottom: 10px;
+        }
+
+        /* Icon styling */
+        .icon {
+            margin-right: 10px;
         }
 
     </style>
@@ -117,7 +141,7 @@
 
 <div class="container mt-5">
     <!-- Applicant Details Section -->
-    <button class="collapsible">Applicant Details</button>
+    <button class="collapsible"><i class="fas fa-user icon"></i>User Profile</button>
     <div class="form-section content">
         <div class="row">
             <div class="col-md-6" style="color: #343a40;">
@@ -131,10 +155,11 @@
     </div>
 
     <!-- Recommended Universities Section -->
-    <button class="collapsible mt-3">Recommended Universities</button>
+    <button class="collapsible mt-5"><i class="fas fa-university icon"></i>Recommended Universities</button>
     <div class="form-section content">
         <div class="row">
             <div class="col-md-6" style="color: #343a40; padding-left: 0;">
+                <br>
                 <ul class="recommended-universities">
                     {% for univ, prob in predicted_colleges %}
                     <p>{{ univ }}</p>
@@ -146,17 +171,24 @@
 
 
     <!-- Similar Users Section -->
-    <button class="collapsible mt-3">Similar Users</button>
+    <button class="collapsible mt-5"><i class="fas fa-users icon"></i>Similar Users</button>
     <div class="form-section content">
-        <div class="row">
+        <div class="row justify-content-center"> <!-- Centering the similar users -->
             <div class="col-md-6" style="color: #343a40; padding-left: 0;">
-                <ul>
+                <br>
                 {% for username in similarity_users %}
-                <p class="similar-user">{{ username }} : 
-                    <a href="{% url 'message_users' %}" class="btn btn-primary btn-sm ml-2 message-btn">Message</a>
-                </p>
+                {% if forloop.first %}
+                <div class="similar-user-container">
+                {% endif %}
+                    <p class="similar-user">{{ username }} : 
+                        <a href="{% url 'message_users' %}" class="btn btn-primary btn-sm ml-2 message-btn"><i class="far fa-envelope"></i> Message</a>
+                    </p>
+                {% if forloop.last %}
+                </div>
+                {% else %}
+                <hr> <!-- Add a horizontal line between users -->
+                {% endif %}
                 {% endfor %}
-                </ul>
             </div>
         </div>
     </div>
