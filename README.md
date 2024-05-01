@@ -1,25 +1,25 @@
 # Gradvisor
 This is a part of the CSCE 670 (Information Storage and Retrieval) project.
 
-##### Motivation
+### Motivation
 - Choosing the right university is a significant decision that can have a profound impact on a student's academic and professional future. 
 
 - With Gradvisor, students have access to comprehensive tools and resources that empower them to make informed decisions aligned with their academic profile, career goals, and personal preferences. 
 
 - Create meaningful connections with like-minded people to improve your interactions and enrich your experiences.
 
-##### Model Information
+### Model Information
 
-###### Similar Users Identification:
+### Similar Users Identification:
 - Utilizing K-Nearest Neighbours (KNN) and Pearson Correlation Coefficient to calculate similarity scores of profiles. KNN is chosen for its effectiveness in finding similar user profiles. You can take a look at it [here](https://github.com/mohitsarin-tamu/Gradvisor/blob/main/User-User-K-nearest-neighbour.ipynb)
 
-###### Prediction Process:
+#### Prediction Process:
 - Multiple machine learning algorithms were assessed for prediction, including Random Forest, AdaBoost, and Artificial Neural Networks. 
 
-###### Final Recommendations:
+#### Final Recommendations:
 - Applying the AdaBoost algorithm for university recommendation and utilizing KNN to identify similar user profiles. You can take a look at it [here](https://github.com/mohitsarin-tamu/Gradvisor/blob/main/AdaBoost.ipynb)
 
-##### Data Preprocessing: 
+#### Data Preprocessing: 
 
 - You can download the dataset [here](https://github.com/mohitsarin-tamu/Gradvisor/blob/main/updated_preprocessed.csv).
 
@@ -28,7 +28,36 @@ This is a part of the CSCE 670 (Information Storage and Retrieval) project.
 
 - Each row represents an individual applicant and includes various attributes such as their username, research experience, industry experience, internship experience, GRE scores (Verbal and Quantitative), publications in journals and conferences, CGPA, the name of the university they applied to, their admission status (admitted or not), and their GRE score. 
 
-##### Deploying this project locally:
+### Project Presentation
+
+For a more detailed overview of the Gradvisor project, you can view our presentation slides [here](https://github.com/mohitsarin-tamu/Gradvisor/blob/updateReadme/Gradvisor.pptx).
+
+
+### Structure of this repository:
+1. **djangoApp/**: Contains the Django web application code for Gradvisor.
+
+    - **gradvisorWebSite/**: Main Django project directory.
+        - **settings.py**: Configuration settings for the Django project.
+        - **urls.py**: URL configuration for the Django project.
+
+    - **gradvisor/**: Main Django application directory.
+        - **migrations/**: Database migration files.
+        - **static/**: Static files (CSS, JavaScript, images).
+        - **templates/**: HTML templates.
+        - **admin.py, apps.py, models.py, views.py**: Django application components.
+        - **forms.py**: Form definitions for user input.
+
+2. **User-User-K-nearest-neighbour.ipynb**: Jupyter Notebook for K-Nearest Neighbors algorithm.
+
+3. **AdaBoost.ipynb**: Jupyter Notebook for AdaBoost algorithm.
+
+4. **updated_preprocessed.csv**: Preprocessed dataset.
+
+5. **requirements.txt**: Python dependencies.
+
+6. **Gradvisor.pptx**: PowerPoint presentation.
+
+### Deploying this project locally:
 
 Clone the Repository: Open a terminal or command prompt and use the git clone command to clone the repository to your local machine. 
 
