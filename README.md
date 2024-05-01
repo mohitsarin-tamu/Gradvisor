@@ -44,7 +44,7 @@ Overall, with the motivation to make the process of choosing the universities an
 
 ## Project Presentation
 
-For a more detailed overview of the Gradvisor project, you can view our presentation slides [here](https://github.com/mohitsarin-tamu/Gradvisor/blob/updateReadme/Gradvisor.pptx).
+For a more detailed overview of the Gradvisor project, you can view our presentation slides [here](https://github.com/mohitsarin-tamu/Gradvisor/blob/main/Gradvisor.pptx).
 
 ---
 
