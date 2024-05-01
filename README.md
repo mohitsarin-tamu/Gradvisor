@@ -1,5 +1,6 @@
 # Gradvisor
 This is a part of the CSCE 670 (Information Storage and Retrieval) project.
+Here is our introductory video: https://www.youtube.com/watch?v=rUaBuhE28ns
 
 ---
 
