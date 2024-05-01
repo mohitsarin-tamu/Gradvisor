@@ -105,3 +105,22 @@ python manage.py runserver
 ```
 
 The server usually runs on this url: http://127.0.0.1:8000 
+
+
+## Gradvisor glimpses:
+
+Home Page: 
+
+![Home Page](https://github.com/mohitsarin-tamu/Gradvisor/blob/createAssets/Assets/Screenshot%202024-05-01%20at%2010.04.26.png)
+
+Login/Signup:
+
+![Login](https://github.com/mohitsarin-tamu/Gradvisor/blob/createAssets/Assets/Screenshot%202024-05-01%20at%2010.05.06.png)
+
+Form:
+
+![Form](https://github.com/mohitsarin-tamu/Gradvisor/blob/createAssets/Assets/Screenshot%202024-05-01%20at%2010.05.36.png)
+
+Recommendation and Similar Users:
+
+![Recommendation](https://github.com/mohitsarin-tamu/Gradvisor/blob/createAssets/Assets/Screenshot%202024-05-01%20at%2010.05.58.png)
