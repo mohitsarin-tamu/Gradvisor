@@ -1,6 +1,8 @@
 # Gradvisor
 This is a part of the CSCE 670 (Information Storage and Retrieval) project.
 
+---
+
 ## Summary
 As graduate students, we all have been through a tough time selecting good universities based on our profile. We have to research several universities, check their cutoffs, acceptance rates etc. and gauge our profile against their requirements as we make limited applications because the application process is itself expensive. With the aim to reduce all this friction and make the application process easy, less expensive and more confident, Gradvisor provides university recommendations to the students. 
 
